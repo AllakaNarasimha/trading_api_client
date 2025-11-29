@@ -1,0 +1,8 @@
+include option_chain_monitor_api_simple.py
+include README_OPTION_CHAIN_MONITOR.md
+include OPTION_CHAIN_API_README.md
+include requirements.txt
+include config.xml
+recursive-include client/libs *.tar.gz
+recursive-include market_data *.csv
+recursive-include doc *

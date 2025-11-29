@@ -1,0 +1,10 @@
+# Custom Libraries (Local)
+./client/libs/trading_api-1.0.0.tar.gz
+./client/libs/nslogger-1.0.0.tar.gz
+
+# External Dependencies
+requests>=2.28.0
+python-dotenv>=0.21.0
+certifi>=2023.0.0
+fyers-apiv3>=2.0.0
+dhanhq>=2.0.0

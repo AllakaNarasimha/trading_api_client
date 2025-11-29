@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<trading_api_config>
+    <!-- Dhan API Configuration -->
+    <dhan>
+        <!-- Method 1: Direct Token (24hr validity) -->
+        <client_id>2511093714</client_id>
+        <access_token>YeyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbkNvbnN1bWVyVHlwZSI6IlNFTEYiLCJwYXJ0bmVySWQiOiIiLCJkaGFuQ2xpZW50SWQiOiIyNTExMDkzNzE0Iiwid2ViaG9va1VybCI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCIsImlzcyI6ImRoYW4iLCJleHAiOjE3NjUyOTEyMDl9.5IqPEzNxHNrFtrgX44M-p0REwKi8TP56u7EzBJrW3lreugTXkMNyp_ZT9_WdTh3wdG5YtWYnkZ3AKuVn7UFtKQ</access_token>
+        
+        <!-- Method 2: OAuth Flow (app_id + app_secret) -->
+        <!-- Uncomment below and comment access_token above to use OAuth -->
+        <app_id>038b2a68</app_id>
+        <app_secret>1306d8f1-a750-4939-bfdd-61471f13c516</app_secret>
+        <!-- <callback_url>http://localhost:8000/callback</callback_url> -->
+        
+        <base_url>https://api.dhan.co/v2</base_url>
+    </dhan>
+    
+    <!-- Fyers API Configuration -->
+    <fyers>
+        <app_id>VBYFHBIOSI-100</app_id>
+        <app_secret>5796M7J3N4</app_secret>
+        <access_token></access_token>
+        <callback_url>http://localhost:8000</callback_url>
+        <response_type>code</response_type>
+        <state>state</state>
+        <grant_type>authorization_code</grant_type>
+        <base_url>https://api.fyers.in/api/v3</base_url>
+    </fyers>
+    
+    <!-- General Settings -->
+    <settings>
+        <!-- Request timeout in seconds -->
+        <request_timeout>30</request_timeout>
+        
+        <!-- Logging level: DEBUG, INFO, WARNING, ERROR, CRITICAL -->
+        <log_level>INFO</log_level>
+        
+        <!-- Log file path -->
+        <log_file>trading_api.log</log_file>
+        
+        <!-- Price update interval in seconds -->
+        <price_update_interval>1</price_update_interval>
+        
+        <!-- Database URL (optional) -->
+        <database_url></database_url>
+    </settings>
+    
+    <!-- Option Chain Monitor API Configuration -->
+    <option_monitor>
+        <!-- API Server Settings -->
+        <api_host>0.0.0.0</api_host>
+        <api_port>5000</api_port>
+        
+        <!-- Monitor Settings -->
+        <auto_start>true</auto_start>
+        <default_strikes>15</default_strikes>
+        <max_symbols>10</max_symbols>
+        
+        <!-- Option Chain Fetch Duration in seconds -->
+        <!-- Time to wait between each polling iteration -->
+        <option_chain_fetch_duration>1</option_chain_fetch_duration>
+        
+        <!-- Health Check Monitor Interval in seconds -->
+        <!-- How often to check if polling thread is still running -->
+        <!-- 300 = 5 minutes, 900 = 15 minutes -->
+        <health_check_interval>120</health_check_interval>
+        
+        <!-- Cutoff Timer Settings -->
+        <!-- Enable automatic shutdown at specified time -->
+        <cutoff_enabled>true</cutoff_enabled>
+        <!-- Cutoff time in 24-hour format -->
+        <cutoff_hour>8</cutoff_hour>
+        <cutoff_minute>35</cutoff_minute>
+        
+        <!-- Symbols to Monitor -->
+        <!-- poll_seconds: comma-separated list of seconds (0-59) to poll at -->
+        <!-- strikes: number of strikes to fetch (optional, defaults to default_strikes) -->
+        <symbols>
+            <symbol name="BSE:SENSEX-INDEX" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:NIFTY50-INDEX" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:NIFTYBANK-INDEX" poll_seconds="0,30" strikes="15" />
+        </symbols>
+    </option_monitor>
+</trading_api_config>
