@@ -38,6 +38,7 @@ setup(
     install_requires=[
         "Flask>=2.3.0",
         "requests>=2.28.0",
+        "urllib3>=1.26.0",
         "python-dotenv>=0.21.0",
         "certifi>=2023.0.0",
         # Local dependencies will be installed from client/libs/ during packaging

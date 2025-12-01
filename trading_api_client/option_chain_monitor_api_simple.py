@@ -16,8 +16,12 @@ import os
 import signal
 import ssl
 import logging
+import sys
 from functools import wraps
 from logging.handlers import RotatingFileHandler
+
+# Add current directory to Python path for local imports
+sys.path.insert(0, os.path.dirname(__file__))
 
 import requests
 import urllib3

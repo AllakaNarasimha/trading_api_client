@@ -56,7 +56,7 @@ Repository = "https://github.com/yourusername/trading-api-monitor.git"
 option-chain-monitor = "app:main"
 
 [tool.setuptools]
-packages = ["client", "client.utils", "client.libs"]
+packages = ["client", "client.utils"]
 py-modules = ["option_chain_monitor_api_simple"]
 include-package-data = true
 
