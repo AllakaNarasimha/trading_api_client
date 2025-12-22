@@ -1,0 +1,553 @@
+2025-12-22 09:37:20 - __main__ - INFO - ============================================================
+2025-12-22 09:37:20 - __main__ - INFO - Option Chain Monitor API - Starting
+2025-12-22 09:37:20 - __main__ - INFO - ============================================================
+2025-12-22 09:37:20 - __main__ - INFO - Log file: d:\NS\trading_api_client\option_chain_monitor_api.log
+2025-12-22 09:37:20 - __main__ - INFO - API Host: 0.0.0.0:5000
+2025-12-22 09:37:20 - __main__ - INFO - Max symbols: 10
+2025-12-22 09:37:20 - __main__ - INFO - Default strikes: 15
+2025-12-22 09:37:20 - __main__ - INFO - Default symbol config:
+2025-12-22 09:37:20 - __main__ - INFO -   BSE:SENSEX-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:37:20 - __main__ - INFO -   NSE:NIFTY50-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:37:20 - __main__ - INFO -   NSE:NIFTYBANK-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:37:20 - __main__ - INFO - Auto-start enabled: True
+2025-12-22 09:37:20 - __main__ - INFO - Cutoff timer enabled: True
+2025-12-22 09:37:20 - __main__ - INFO - Cutoff time: 08:35
+2025-12-22 09:37:20 - __main__ - INFO - ============================================================
+2025-12-22 09:37:20 - __main__ - INFO - Initializing cutoff timer for 08:35
+2025-12-22 09:37:20 - client.utils.cutoff_timer - INFO - [CUTOFF] Checking cutoff time: 08:35
+2025-12-22 09:37:20 - client.utils.cutoff_timer - INFO - [CUTOFF] Current time: 09:37:20
+2025-12-22 09:37:20 - client.utils.cutoff_timer - INFO - [CUTOFF] Seconds until cutoff: 0
+2025-12-22 09:37:20 - client.utils.cutoff_timer - WARNING - [CUTOFF] Cutoff time 08:35 has already passed
+2025-12-22 09:37:20 - __main__ - INFO - [OK] Cutoff timer started
+2025-12-22 09:37:20 - __main__ - INFO - Auto-starting monitor...
+2025-12-22 09:37:20 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 09:37:20 - client.utils.option_chain_monitor - INFO - [THREAD START] fetch_monitor thread started (ID: 10480)
+2025-12-22 09:37:20 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] health_check_monitor thread is now running (interval: 120s)
+2025-12-22 09:37:20 - client.utils.option_chain_monitor - INFO - [THREAD START] health_check_monitor thread started (ID: 10476)
+2025-12-22 09:37:20 - client.utils.option_chain_monitor - INFO - Monitor started: symbols=['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 09:37:20 - client.utils.option_chain_monitor - INFO -   BSE:SENSEX-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:37:20 - client.utils.option_chain_monitor - INFO -   NSE:NIFTY50-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:37:20 - client.utils.option_chain_monitor - INFO -   NSE:NIFTYBANK-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:37:20 - __main__ - INFO - Waiting 5 seconds before fetching historical data...
+2025-12-22 09:37:22 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:37:23 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:37:25 - __main__ - INFO - Fetching historical data...
+2025-12-22 09:37:25 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:37:26 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:37:27 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:37:28 - client.utils.option_chain_monitor - ERROR - Failed to initialize watcher for BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:37:28 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:37:29 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:37:29 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 09:38:06 - __main__ - INFO - ============================================================
+2025-12-22 09:38:06 - __main__ - INFO - Option Chain Monitor API - Starting
+2025-12-22 09:38:06 - __main__ - INFO - ============================================================
+2025-12-22 09:38:06 - __main__ - INFO - Log file: d:\NS\trading_api_client\option_chain_monitor_api.log
+2025-12-22 09:38:06 - __main__ - INFO - API Host: 0.0.0.0:5000
+2025-12-22 09:38:06 - __main__ - INFO - Max symbols: 10
+2025-12-22 09:38:06 - __main__ - INFO - Default strikes: 15
+2025-12-22 09:38:06 - __main__ - INFO - Default symbol config:
+2025-12-22 09:38:06 - __main__ - INFO -   BSE:SENSEX-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:38:06 - __main__ - INFO -   NSE:NIFTY50-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:38:06 - __main__ - INFO -   NSE:NIFTYBANK-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:38:06 - __main__ - INFO - Auto-start enabled: True
+2025-12-22 09:38:06 - __main__ - INFO - Cutoff timer enabled: True
+2025-12-22 09:38:06 - __main__ - INFO - Cutoff time: 08:35
+2025-12-22 09:38:06 - __main__ - INFO - ============================================================
+2025-12-22 09:38:06 - __main__ - INFO - Initializing cutoff timer for 08:35
+2025-12-22 09:38:06 - client.utils.cutoff_timer - INFO - [CUTOFF] Checking cutoff time: 08:35
+2025-12-22 09:38:06 - client.utils.cutoff_timer - INFO - [CUTOFF] Current time: 09:38:06
+2025-12-22 09:38:06 - client.utils.cutoff_timer - INFO - [CUTOFF] Seconds until cutoff: 0
+2025-12-22 09:38:06 - client.utils.cutoff_timer - WARNING - [CUTOFF] Cutoff time 08:35 has already passed
+2025-12-22 09:38:06 - __main__ - INFO - [OK] Cutoff timer started
+2025-12-22 09:38:06 - __main__ - INFO - Auto-starting monitor...
+2025-12-22 09:38:06 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 09:38:06 - client.utils.option_chain_monitor - INFO - [THREAD START] fetch_monitor thread started (ID: 28596)
+2025-12-22 09:38:06 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] health_check_monitor thread is now running (interval: 120s)
+2025-12-22 09:38:06 - client.utils.option_chain_monitor - INFO - [THREAD START] health_check_monitor thread started (ID: 20088)
+2025-12-22 09:38:06 - client.utils.option_chain_monitor - INFO - Monitor started: symbols=['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 09:38:06 - client.utils.option_chain_monitor - INFO -   BSE:SENSEX-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:38:06 - client.utils.option_chain_monitor - INFO -   NSE:NIFTY50-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:38:06 - client.utils.option_chain_monitor - INFO -   NSE:NIFTYBANK-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:38:06 - __main__ - INFO - Waiting 5 seconds before fetching historical data...
+2025-12-22 09:38:08 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:38:10 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:38:11 - __main__ - INFO - Fetching historical data...
+2025-12-22 09:38:12 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:38:13 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:38:13 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:38:15 - client.utils.option_chain_monitor - ERROR - Failed to initialize watcher for BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:38:15 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:38:16 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:38:16 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 09:38:16 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:38:17 - client.utils.option_chain_monitor - ERROR - Failed to initialize watcher for NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:38:20 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:38:21 - client.utils.option_chain_monitor - ERROR - Failed to initialize watcher for NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:38:21 - client.utils.option_chain_monitor - WARNING - No watchers available for historical data fetch
+2025-12-22 09:38:21 - __main__ - INFO - Historical data fetch completed
+2025-12-22 09:38:21 - __main__ - INFO - [OK] Monitor started
+2025-12-22 09:38:21 - __main__ - INFO - API endpoints available:
+2025-12-22 09:38:21 - __main__ - INFO -   GET  http://localhost:5000/api/health
+2025-12-22 09:38:21 - __main__ - INFO -   GET  http://localhost:5000/api/status
+2025-12-22 09:38:21 - __main__ - INFO -   POST http://localhost:5000/api/start
+2025-12-22 09:38:21 - __main__ - INFO -   POST http://localhost:5000/api/add-symbol
+2025-12-22 09:38:21 - __main__ - INFO -   POST http://localhost:5000/api/stop
+2025-12-22 09:38:21 - __main__ - INFO - ============================================================
+2025-12-22 09:38:21 - client.utils.option_chain_api - INFO - Starting Flask server on 0.0.0.0:5000
+2025-12-22 09:40:06 - client.utils.option_chain_monitor - WARNING - Polling thread stopped unexpectedly! Restarting...
+2025-12-22 09:40:06 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 09:40:06 - client.utils.option_chain_monitor - INFO - [THREAD RESTART] fetch_monitor restarted successfully (ID: 28472)
+2025-12-22 09:40:08 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:40:10 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:40:12 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:40:13 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:40:15 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:40:16 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:40:16 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 09:40:57 - __main__ - INFO - ============================================================
+2025-12-22 09:40:57 - __main__ - INFO - Option Chain Monitor API - Starting
+2025-12-22 09:40:57 - __main__ - INFO - ============================================================
+2025-12-22 09:40:57 - __main__ - INFO - Log file: d:\NS\trading_api_client\option_chain_monitor_api.log
+2025-12-22 09:40:57 - __main__ - INFO - API Host: 0.0.0.0:5000
+2025-12-22 09:40:57 - __main__ - INFO - Max symbols: 10
+2025-12-22 09:40:57 - __main__ - INFO - Default strikes: 15
+2025-12-22 09:40:57 - __main__ - INFO - Default symbol config:
+2025-12-22 09:40:57 - __main__ - INFO -   BSE:SENSEX-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:40:57 - __main__ - INFO -   NSE:NIFTY50-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:40:57 - __main__ - INFO -   NSE:NIFTYBANK-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:40:57 - __main__ - INFO - Auto-start enabled: True
+2025-12-22 09:40:57 - __main__ - INFO - Cutoff timer enabled: True
+2025-12-22 09:40:57 - __main__ - INFO - Cutoff time: 08:35
+2025-12-22 09:40:57 - __main__ - INFO - ============================================================
+2025-12-22 09:40:57 - __main__ - INFO - Initializing cutoff timer for 08:35
+2025-12-22 09:40:57 - client.utils.cutoff_timer - INFO - [CUTOFF] Checking cutoff time: 08:35
+2025-12-22 09:40:57 - client.utils.cutoff_timer - INFO - [CUTOFF] Current time: 09:40:57
+2025-12-22 09:40:57 - client.utils.cutoff_timer - INFO - [CUTOFF] Seconds until cutoff: 0
+2025-12-22 09:40:57 - client.utils.cutoff_timer - WARNING - [CUTOFF] Cutoff time 08:35 has already passed
+2025-12-22 09:40:57 - __main__ - INFO - [OK] Cutoff timer started
+2025-12-22 09:40:57 - __main__ - INFO - Auto-starting monitor...
+2025-12-22 09:40:57 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 09:40:57 - client.utils.option_chain_monitor - INFO - [THREAD START] fetch_monitor thread started (ID: 13960)
+2025-12-22 09:40:57 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] health_check_monitor thread is now running (interval: 120s)
+2025-12-22 09:40:57 - client.utils.option_chain_monitor - INFO - [THREAD START] health_check_monitor thread started (ID: 10224)
+2025-12-22 09:40:57 - client.utils.option_chain_monitor - INFO - Monitor started: symbols=['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 09:40:57 - client.utils.option_chain_monitor - INFO -   BSE:SENSEX-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:40:57 - client.utils.option_chain_monitor - INFO -   NSE:NIFTY50-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:40:57 - client.utils.option_chain_monitor - INFO -   NSE:NIFTYBANK-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:40:57 - __main__ - INFO - Waiting 5 seconds before fetching historical data...
+2025-12-22 09:40:59 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:41:00 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:41:02 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:41:02 - __main__ - INFO - Fetching historical data...
+2025-12-22 09:41:03 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:41:04 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:41:05 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:41:05 - client.utils.option_chain_monitor - ERROR - Failed to initialize watcher for BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:41:06 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:41:06 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 09:41:08 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:41:09 - client.utils.option_chain_monitor - ERROR - Failed to initialize watcher for NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:41:11 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Roaming\Python\Python313\site-packages\certifi\cacert.pem
+2025-12-22 09:41:12 - client.utils.option_chain_monitor - ERROR - Failed to initialize watcher for NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:41:12 - client.utils.option_chain_monitor - WARNING - No watchers available for historical data fetch
+2025-12-22 09:41:12 - __main__ - INFO - Historical data fetch completed
+2025-12-22 09:41:12 - __main__ - INFO - [OK] Monitor started
+2025-12-22 09:41:12 - __main__ - INFO - API endpoints available:
+2025-12-22 09:41:12 - __main__ - INFO -   GET  http://localhost:5000/api/health
+2025-12-22 09:41:12 - __main__ - INFO -   GET  http://localhost:5000/api/status
+2025-12-22 09:41:12 - __main__ - INFO -   POST http://localhost:5000/api/start
+2025-12-22 09:41:12 - __main__ - INFO -   POST http://localhost:5000/api/add-symbol
+2025-12-22 09:41:12 - __main__ - INFO -   POST http://localhost:5000/api/stop
+2025-12-22 09:41:12 - __main__ - INFO - ============================================================
+2025-12-22 09:41:12 - client.utils.option_chain_api - INFO - Starting Flask server on 0.0.0.0:5000
+2025-12-22 09:59:01 - __main__ - INFO - ============================================================
+2025-12-22 09:59:01 - __main__ - INFO - Option Chain Monitor API - Starting
+2025-12-22 09:59:01 - __main__ - INFO - ============================================================
+2025-12-22 09:59:01 - __main__ - INFO - Log file: D:\NS\trading_api_client\option_chain_monitor_api.log
+2025-12-22 09:59:01 - __main__ - INFO - API Host: 0.0.0.0:5000
+2025-12-22 09:59:01 - __main__ - INFO - Max symbols: 10
+2025-12-22 09:59:01 - __main__ - INFO - Default strikes: 15
+2025-12-22 09:59:01 - __main__ - INFO - Default symbol config:
+2025-12-22 09:59:01 - __main__ - INFO -   BSE:SENSEX-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:59:01 - __main__ - INFO -   NSE:NIFTY50-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:59:01 - __main__ - INFO -   NSE:NIFTYBANK-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:59:01 - __main__ - INFO - Auto-start enabled: True
+2025-12-22 09:59:01 - __main__ - INFO - Cutoff timer enabled: True
+2025-12-22 09:59:01 - __main__ - INFO - Cutoff time: 08:35
+2025-12-22 09:59:01 - __main__ - INFO - ============================================================
+2025-12-22 09:59:01 - __main__ - INFO - Initializing cutoff timer for 08:35
+2025-12-22 09:59:01 - client.utils.cutoff_timer - INFO - [CUTOFF] Checking cutoff time: 08:35
+2025-12-22 09:59:01 - client.utils.cutoff_timer - INFO - [CUTOFF] Current time: 09:59:01
+2025-12-22 09:59:01 - client.utils.cutoff_timer - INFO - [CUTOFF] Seconds until cutoff: 0
+2025-12-22 09:59:01 - client.utils.cutoff_timer - WARNING - [CUTOFF] Cutoff time 08:35 has already passed
+2025-12-22 09:59:01 - __main__ - INFO - [OK] Cutoff timer started
+2025-12-22 09:59:01 - __main__ - INFO - Auto-starting monitor...
+2025-12-22 09:59:01 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 09:59:01 - client.utils.option_chain_monitor - INFO - [THREAD START] fetch_monitor thread started (ID: 28904)
+2025-12-22 09:59:01 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] health_check_monitor thread is now running (interval: 120s)
+2025-12-22 09:59:01 - client.utils.option_chain_monitor - INFO - [THREAD START] health_check_monitor thread started (ID: 30104)
+2025-12-22 09:59:01 - client.utils.option_chain_monitor - INFO - Monitor started: symbols=['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 09:59:01 - client.utils.option_chain_monitor - INFO -   BSE:SENSEX-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:59:01 - client.utils.option_chain_monitor - INFO -   NSE:NIFTY50-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:59:01 - client.utils.option_chain_monitor - INFO -   NSE:NIFTYBANK-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 09:59:01 - __main__ - INFO - Waiting 5 seconds before fetching historical data...
+2025-12-22 09:59:05 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 09:59:06 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:59:06 - __main__ - INFO - Fetching historical data...
+2025-12-22 09:59:07 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 09:59:07 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 09:59:08 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:59:09 - client.utils.option_chain_monitor - ERROR - Failed to initialize watcher for BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:59:09 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 09:59:09 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 09:59:11 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:59:11 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 09:59:11 - client.utils.option_chain_monitor - ERROR - Failed to initialize watcher for NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:59:12 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 09:59:13 - client.utils.option_chain_monitor - ERROR - Failed to initialize watcher for NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 09:59:13 - client.utils.option_chain_monitor - WARNING - No watchers available for historical data fetch
+2025-12-22 09:59:13 - __main__ - INFO - Historical data fetch completed
+2025-12-22 09:59:13 - __main__ - INFO - [OK] Monitor started
+2025-12-22 09:59:13 - __main__ - INFO - API endpoints available:
+2025-12-22 09:59:13 - __main__ - INFO -   GET  http://localhost:5000/api/health
+2025-12-22 09:59:13 - __main__ - INFO -   GET  http://localhost:5000/api/status
+2025-12-22 09:59:13 - __main__ - INFO -   POST http://localhost:5000/api/start
+2025-12-22 09:59:13 - __main__ - INFO -   POST http://localhost:5000/api/add-symbol
+2025-12-22 09:59:13 - __main__ - INFO -   POST http://localhost:5000/api/stop
+2025-12-22 09:59:13 - __main__ - INFO - ============================================================
+2025-12-22 09:59:13 - client.utils.option_chain_api - INFO - Starting Flask server on 0.0.0.0:5000
+2025-12-22 10:01:01 - client.utils.option_chain_monitor - WARNING - Polling thread stopped unexpectedly! Restarting...
+2025-12-22 10:01:01 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:01:01 - client.utils.option_chain_monitor - INFO - [THREAD RESTART] fetch_monitor restarted successfully (ID: 13660)
+2025-12-22 10:01:02 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:01:04 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:01:05 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:01:06 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:01:07 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:01:08 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:01:08 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 10:03:01 - client.utils.option_chain_monitor - WARNING - Polling thread stopped unexpectedly! Restarting...
+2025-12-22 10:03:01 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:03:01 - client.utils.option_chain_monitor - INFO - [THREAD RESTART] fetch_monitor restarted successfully (ID: 28348)
+2025-12-22 10:03:02 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:03:04 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:03:05 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:03:06 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:03:07 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:03:08 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:03:08 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 10:05:01 - client.utils.option_chain_monitor - WARNING - Polling thread stopped unexpectedly! Restarting...
+2025-12-22 10:05:01 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:05:01 - client.utils.option_chain_monitor - INFO - [THREAD RESTART] fetch_monitor restarted successfully (ID: 20324)
+2025-12-22 10:05:02 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:05:04 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:05:05 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:05:06 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:05:07 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:05:08 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:05:08 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 10:07:01 - client.utils.option_chain_monitor - WARNING - Polling thread stopped unexpectedly! Restarting...
+2025-12-22 10:07:01 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:07:01 - client.utils.option_chain_monitor - INFO - [THREAD RESTART] fetch_monitor restarted successfully (ID: 24236)
+2025-12-22 10:07:02 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:07:04 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:07:05 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:07:06 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:07:07 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:07:08 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:07:08 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 10:09:01 - client.utils.option_chain_monitor - WARNING - Polling thread stopped unexpectedly! Restarting...
+2025-12-22 10:09:01 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:09:01 - client.utils.option_chain_monitor - INFO - [THREAD RESTART] fetch_monitor restarted successfully (ID: 1484)
+2025-12-22 10:09:02 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:09:03 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:09:04 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:09:05 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:09:06 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:09:07 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:09:07 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 10:09:09 - __main__ - INFO - ============================================================
+2025-12-22 10:09:09 - __main__ - INFO - Option Chain Monitor API - Starting
+2025-12-22 10:09:09 - __main__ - INFO - ============================================================
+2025-12-22 10:09:09 - __main__ - INFO - Log file: d:\NS\trading_api_client\option_chain_monitor_api.log
+2025-12-22 10:09:09 - __main__ - INFO - API Host: 0.0.0.0:5000
+2025-12-22 10:09:09 - __main__ - INFO - Max symbols: 10
+2025-12-22 10:09:09 - __main__ - INFO - Default strikes: 15
+2025-12-22 10:09:09 - __main__ - INFO - Default symbol config:
+2025-12-22 10:09:09 - __main__ - INFO -   BSE:SENSEX-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:09:09 - __main__ - INFO -   NSE:NIFTY50-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:09:09 - __main__ - INFO -   NSE:NIFTYBANK-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:09:09 - __main__ - INFO - Auto-start enabled: True
+2025-12-22 10:09:09 - __main__ - INFO - Cutoff timer enabled: True
+2025-12-22 10:09:09 - __main__ - INFO - Cutoff time: 08:35
+2025-12-22 10:09:09 - __main__ - INFO - ============================================================
+2025-12-22 10:09:09 - __main__ - INFO - Initializing cutoff timer for 08:35
+2025-12-22 10:09:09 - client.utils.cutoff_timer - INFO - [CUTOFF] Checking cutoff time: 08:35
+2025-12-22 10:09:09 - client.utils.cutoff_timer - INFO - [CUTOFF] Current time: 10:09:09
+2025-12-22 10:09:09 - client.utils.cutoff_timer - INFO - [CUTOFF] Seconds until cutoff: 0
+2025-12-22 10:09:09 - client.utils.cutoff_timer - WARNING - [CUTOFF] Cutoff time 08:35 has already passed
+2025-12-22 10:09:09 - __main__ - INFO - [OK] Cutoff timer started
+2025-12-22 10:09:09 - __main__ - INFO - Auto-starting monitor...
+2025-12-22 10:09:09 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:09:09 - client.utils.option_chain_monitor - INFO - [THREAD START] fetch_monitor thread started (ID: 27640)
+2025-12-22 10:09:09 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] health_check_monitor thread is now running (interval: 120s)
+2025-12-22 10:09:09 - client.utils.option_chain_monitor - INFO - [THREAD START] health_check_monitor thread started (ID: 11788)
+2025-12-22 10:09:09 - client.utils.option_chain_monitor - INFO - Monitor started: symbols=['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 10:09:09 - client.utils.option_chain_monitor - INFO -   BSE:SENSEX-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:09:09 - client.utils.option_chain_monitor - INFO -   NSE:NIFTY50-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:09:09 - client.utils.option_chain_monitor - INFO -   NSE:NIFTYBANK-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:09:09 - __main__ - INFO - Waiting 5 seconds before fetching historical data...
+2025-12-22 10:09:11 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Local\.certifi\cacert.pem
+2025-12-22 10:09:14 - __main__ - INFO - Fetching historical data...
+2025-12-22 10:09:16 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Local\.certifi\cacert.pem
+2025-12-22 10:09:18 - FyersAPI - INFO - Opening authorization URL: https://api-t1.fyers.in/api/v3/generate-authcode?client_id=VBYFHBIOSI-100&redirect_uri=http%3A%2F%2Flocalhost%3A8000&response_type=code&state=state
+2025-12-22 10:09:18 - FyersAPI - INFO - Opened in Google Chrome incognito
+2025-12-22 10:09:23 - FyersAPI - INFO - Opening authorization URL: https://api-t1.fyers.in/api/v3/generate-authcode?client_id=VBYFHBIOSI-100&redirect_uri=http%3A%2F%2Flocalhost%3A8000&response_type=code&state=state
+2025-12-22 10:09:23 - FyersAPI - INFO - Opened in Google Chrome incognito
+2025-12-22 10:10:09 - __main__ - INFO - [OK] Monitor started
+2025-12-22 10:10:09 - __main__ - INFO - API endpoints available:
+2025-12-22 10:10:09 - __main__ - INFO -   GET  http://localhost:5000/api/health
+2025-12-22 10:10:09 - __main__ - INFO -   GET  http://localhost:5000/api/status
+2025-12-22 10:10:09 - __main__ - INFO -   POST http://localhost:5000/api/start
+2025-12-22 10:10:09 - __main__ - INFO -   POST http://localhost:5000/api/add-symbol
+2025-12-22 10:10:09 - __main__ - INFO -   POST http://localhost:5000/api/stop
+2025-12-22 10:10:09 - __main__ - INFO - ============================================================
+2025-12-22 10:10:09 - client.utils.option_chain_api - INFO - Starting Flask server on 0.0.0.0:5000
+2025-12-22 10:10:22 - client.utils.option_chain_monitor - INFO - Polling thread started for: ['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 10:10:22 - client.utils.historical_data_fetcher - INFO - HistoricalDataFetcher using configured symbols: ['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 10:10:22 - client.utils.historical_data_fetcher - INFO - HistoryDataManager initialized successfully
+2025-12-22 10:10:22 - client.utils.historical_data_fetcher - INFO - Starting historical data fetch for 3 symbols: ['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 10:10:22 - client.utils.historical_data_fetcher - INFO - Fetching historical data for BSE:SENSEX-INDEX: 30 days back, 1min intervals
+2025-12-22 10:10:25 - client.utils.option_chain_monitor - INFO - Waiting 34.93 seconds until next minute boundary (00 seconds)...
+2025-12-22 10:10:26 - client.utils.historical_data_fetcher - INFO - Fetched 7556 historical records for BSE:SENSEX-INDEX
+2025-12-22 10:10:26 - client.utils.historical_data_fetcher - INFO - Successfully logged 7556 historical data records to database for BSE:SENSEX-INDEX
+2025-12-22 10:10:26 - client.utils.historical_data_fetcher - INFO - Saved historical data to CSV: dec2025\csv_data\221225_2025_BSE_SENSEX_INDEX_HISTORY.csv
+2025-12-22 10:10:26 - client.utils.historical_data_fetcher - INFO - Fetching historical data for NSE:NIFTY50-INDEX: 30 days back, 1min intervals
+2025-12-22 10:10:30 - client.utils.historical_data_fetcher - INFO - Fetched 7556 historical records for NSE:NIFTY50-INDEX
+2025-12-22 10:10:30 - client.utils.historical_data_fetcher - INFO - Successfully logged 7556 historical data records to database for NSE:NIFTY50-INDEX
+2025-12-22 10:10:30 - client.utils.historical_data_fetcher - INFO - Saved historical data to CSV: dec2025\csv_data\221225_2025_NSE_NIFTY50_INDEX_HISTORY.csv
+2025-12-22 10:10:30 - client.utils.historical_data_fetcher - INFO - Fetching historical data for NSE:NIFTYBANK-INDEX: 30 days back, 1min intervals
+2025-12-22 10:10:33 - client.utils.historical_data_fetcher - INFO - Fetched 7556 historical records for NSE:NIFTYBANK-INDEX
+2025-12-22 10:10:33 - client.utils.historical_data_fetcher - INFO - Successfully logged 7556 historical data records to database for NSE:NIFTYBANK-INDEX
+2025-12-22 10:10:33 - client.utils.historical_data_fetcher - INFO - Saved historical data to CSV: dec2025\csv_data\221225_2025_NSE_NIFTYBANK_INDEX_HISTORY.csv
+2025-12-22 10:10:33 - __main__ - INFO - Historical data fetch completed
+2025-12-22 10:11:00 - client.utils.option_chain_monitor - INFO - Initializing live price monitoring...
+2025-12-22 10:11:00 - client.utils.live_price_fetcher - INFO - LivePriceFetcher using configured symbols: ['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 10:11:00 - client.utils.live_price_fetcher - INFO - HistoryDataManager initialized for live price logging
+2025-12-22 10:11:00 - client.utils.live_price_fetcher - INFO - Starting live price subscriptions for 3 symbols: ['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 10:11:01 - client.utils.option_chain_monitor - WARNING - Polling thread stopped unexpectedly! Restarting...
+2025-12-22 10:11:01 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:11:01 - client.utils.option_chain_monitor - INFO - [THREAD RESTART] fetch_monitor restarted successfully (ID: 13416)
+2025-12-22 10:11:02 - websocket - INFO - Websocket connected
+2025-12-22 10:11:02 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:11:03 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:11:04 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:11:04 - client.utils.live_price_fetcher - INFO - Subscribed to live prices for BSE:SENSEX-INDEX
+2025-12-22 10:11:05 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:11:06 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:11:06 - websocket - INFO - Websocket connected
+2025-12-22 10:11:07 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:11:07 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 10:11:09 - client.utils.live_price_fetcher - INFO - Subscribed to live prices for NSE:NIFTY50-INDEX
+2025-12-22 10:11:11 - client.utils.live_price_fetcher - INFO - Subscribed to live prices for NSE:NIFTYBANK-INDEX
+2025-12-22 10:11:11 - client.utils.option_chain_monitor - INFO - Live price subscriptions active: 3/3 symbols
+2025-12-22 10:13:01 - client.utils.option_chain_monitor - WARNING - Polling thread stopped unexpectedly! Restarting...
+2025-12-22 10:13:01 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:13:01 - client.utils.option_chain_monitor - INFO - [THREAD RESTART] fetch_monitor restarted successfully (ID: 27348)
+2025-12-22 10:13:02 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:13:04 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:13:05 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:13:06 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:13:07 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:13:08 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:13:08 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 10:15:01 - client.utils.option_chain_monitor - WARNING - Polling thread stopped unexpectedly! Restarting...
+2025-12-22 10:15:01 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:15:01 - client.utils.option_chain_monitor - INFO - [THREAD RESTART] fetch_monitor restarted successfully (ID: 12112)
+2025-12-22 10:15:02 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:15:03 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:15:04 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:15:05 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:15:06 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:15:07 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:15:07 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 10:17:01 - client.utils.option_chain_monitor - WARNING - Polling thread stopped unexpectedly! Restarting...
+2025-12-22 10:17:01 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:17:01 - client.utils.option_chain_monitor - INFO - [THREAD RESTART] fetch_monitor restarted successfully (ID: 25200)
+2025-12-22 10:17:02 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:17:03 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:17:04 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:17:05 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:17:06 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:17:07 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:17:07 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 10:18:17 - __main__ - INFO - Received signal 2, initiating graceful shutdown...
+2025-12-22 10:18:17 - __main__ - INFO - Shutdown complete
+2025-12-22 10:20:23 - __main__ - INFO - ============================================================
+2025-12-22 10:20:23 - __main__ - INFO - Option Chain Monitor API - Starting
+2025-12-22 10:20:23 - __main__ - INFO - ============================================================
+2025-12-22 10:20:23 - __main__ - INFO - Log file: D:\NS\trading_api_client\option_chain_monitor_api.log
+2025-12-22 10:20:23 - __main__ - INFO - API Host: 0.0.0.0:5000
+2025-12-22 10:20:23 - __main__ - INFO - Max symbols: 10
+2025-12-22 10:20:23 - __main__ - INFO - Default strikes: 15
+2025-12-22 10:20:23 - __main__ - INFO - Default symbol config:
+2025-12-22 10:20:23 - __main__ - INFO -   BSE:SENSEX-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:20:23 - __main__ - INFO -   NSE:NIFTY50-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:20:23 - __main__ - INFO -   NSE:NIFTYBANK-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:20:23 - __main__ - INFO - Auto-start enabled: True
+2025-12-22 10:20:23 - __main__ - INFO - Cutoff timer enabled: True
+2025-12-22 10:20:23 - __main__ - INFO - Cutoff time: 08:35
+2025-12-22 10:20:23 - __main__ - INFO - ============================================================
+2025-12-22 10:20:23 - __main__ - INFO - Initializing cutoff timer for 08:35
+2025-12-22 10:20:23 - client.utils.cutoff_timer - INFO - [CUTOFF] Checking cutoff time: 08:35
+2025-12-22 10:20:23 - client.utils.cutoff_timer - INFO - [CUTOFF] Current time: 10:20:23
+2025-12-22 10:20:23 - client.utils.cutoff_timer - INFO - [CUTOFF] Seconds until cutoff: 0
+2025-12-22 10:20:23 - client.utils.cutoff_timer - WARNING - [CUTOFF] Cutoff time 08:35 has already passed
+2025-12-22 10:20:23 - __main__ - INFO - [OK] Cutoff timer started
+2025-12-22 10:20:23 - __main__ - INFO - Auto-starting monitor...
+2025-12-22 10:20:23 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:20:23 - client.utils.option_chain_monitor - INFO - [THREAD START] fetch_monitor thread started (ID: 6864)
+2025-12-22 10:20:23 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] health_check_monitor thread is now running (interval: 120s)
+2025-12-22 10:20:23 - client.utils.option_chain_monitor - INFO - [THREAD START] health_check_monitor thread started (ID: 31296)
+2025-12-22 10:20:23 - client.utils.option_chain_monitor - INFO - Monitor started: symbols=['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 10:20:23 - client.utils.option_chain_monitor - INFO -   BSE:SENSEX-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:20:23 - client.utils.option_chain_monitor - INFO -   NSE:NIFTY50-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:20:23 - client.utils.option_chain_monitor - INFO -   NSE:NIFTYBANK-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:20:23 - __main__ - INFO - Waiting 5 seconds before fetching historical data...
+2025-12-22 10:20:26 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:20:27 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:20:27 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:20:28 - __main__ - INFO - Fetching historical data...
+2025-12-22 10:20:28 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:20:28 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:20:29 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:20:29 - client.utils.option_chain_monitor - ERROR - Failed to initialize watcher for BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:20:30 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:20:30 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:20:30 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 10:20:31 - client.utils.option_chain_monitor - ERROR - Failed to initialize watcher for NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:20:32 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:20:33 - client.utils.option_chain_monitor - ERROR - Failed to initialize watcher for NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:20:33 - client.utils.option_chain_monitor - WARNING - No watchers available for historical data fetch
+2025-12-22 10:20:33 - __main__ - INFO - Historical data fetch completed
+2025-12-22 10:20:33 - __main__ - INFO - [OK] Monitor started
+2025-12-22 10:20:33 - __main__ - INFO - API endpoints available:
+2025-12-22 10:20:33 - __main__ - INFO -   GET  http://localhost:5000/api/health
+2025-12-22 10:20:33 - __main__ - INFO -   GET  http://localhost:5000/api/status
+2025-12-22 10:20:33 - __main__ - INFO -   POST http://localhost:5000/api/start
+2025-12-22 10:20:33 - __main__ - INFO -   POST http://localhost:5000/api/add-symbol
+2025-12-22 10:20:33 - __main__ - INFO -   POST http://localhost:5000/api/stop
+2025-12-22 10:20:33 - __main__ - INFO - ============================================================
+2025-12-22 10:20:33 - client.utils.option_chain_api - INFO - Starting Flask server on 0.0.0.0:5000
+2025-12-22 10:22:23 - client.utils.option_chain_monitor - WARNING - Polling thread stopped unexpectedly! Restarting...
+2025-12-22 10:22:23 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:22:23 - client.utils.option_chain_monitor - INFO - [THREAD RESTART] fetch_monitor restarted successfully (ID: 31200)
+2025-12-22 10:22:23 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:22:25 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:22:25 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:22:26 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:22:27 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:22:28 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:22:28 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 10:23:01 - __main__ - INFO - ============================================================
+2025-12-22 10:23:01 - __main__ - INFO - Option Chain Monitor API - Starting
+2025-12-22 10:23:01 - __main__ - INFO - ============================================================
+2025-12-22 10:23:01 - __main__ - INFO - Log file: d:\NS\trading_api_client\option_chain_monitor_api.log
+2025-12-22 10:23:01 - __main__ - INFO - API Host: 0.0.0.0:5000
+2025-12-22 10:23:01 - __main__ - INFO - Max symbols: 10
+2025-12-22 10:23:01 - __main__ - INFO - Default strikes: 15
+2025-12-22 10:23:01 - __main__ - INFO - Default symbol config:
+2025-12-22 10:23:01 - __main__ - INFO -   BSE:SENSEX-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:23:01 - __main__ - INFO -   NSE:NIFTY50-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:23:01 - __main__ - INFO -   NSE:NIFTYBANK-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:23:01 - __main__ - INFO - Auto-start enabled: True
+2025-12-22 10:23:01 - __main__ - INFO - Cutoff timer enabled: True
+2025-12-22 10:23:01 - __main__ - INFO - Cutoff time: 08:35
+2025-12-22 10:23:01 - __main__ - INFO - ============================================================
+2025-12-22 10:23:01 - __main__ - INFO - Initializing cutoff timer for 08:35
+2025-12-22 10:23:01 - client.utils.cutoff_timer - INFO - [CUTOFF] Checking cutoff time: 08:35
+2025-12-22 10:23:01 - client.utils.cutoff_timer - INFO - [CUTOFF] Current time: 10:23:01
+2025-12-22 10:23:01 - client.utils.cutoff_timer - INFO - [CUTOFF] Seconds until cutoff: 0
+2025-12-22 10:23:01 - client.utils.cutoff_timer - WARNING - [CUTOFF] Cutoff time 08:35 has already passed
+2025-12-22 10:23:01 - __main__ - INFO - [OK] Cutoff timer started
+2025-12-22 10:23:01 - __main__ - INFO - Auto-starting monitor...
+2025-12-22 10:23:01 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:23:01 - client.utils.option_chain_monitor - INFO - [THREAD START] fetch_monitor thread started (ID: 30084)
+2025-12-22 10:23:01 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] health_check_monitor thread is now running (interval: 120s)
+2025-12-22 10:23:01 - client.utils.option_chain_monitor - INFO - [THREAD START] health_check_monitor thread started (ID: 22148)
+2025-12-22 10:23:02 - client.utils.option_chain_monitor - INFO - Monitor started: symbols=['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 10:23:02 - client.utils.option_chain_monitor - INFO -   BSE:SENSEX-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:23:02 - client.utils.option_chain_monitor - INFO -   NSE:NIFTY50-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:23:02 - client.utils.option_chain_monitor - INFO -   NSE:NIFTYBANK-INDEX: poll at seconds [0, 30], strikes: 15
+2025-12-22 10:23:02 - __main__ - INFO - Waiting 5 seconds before fetching historical data...
+2025-12-22 10:23:03 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Local\.certifi\cacert.pem
+2025-12-22 10:23:07 - __main__ - INFO - Fetching historical data...
+2025-12-22 10:23:08 - FyersAPI - INFO - SSL certificates configured: C:\Users\narasimharao.allaka\AppData\Local\.certifi\cacert.pem
+2025-12-22 10:23:12 - client.utils.option_chain_monitor - INFO - Polling thread started for: ['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 10:23:14 - client.utils.option_chain_monitor - INFO - Waiting 45.30 seconds until next minute boundary (00 seconds)...
+2025-12-22 10:23:17 - client.utils.historical_data_fetcher - INFO - HistoricalDataFetcher using configured symbols: ['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 10:23:17 - client.utils.historical_data_fetcher - INFO - HistoryDataManager initialized successfully
+2025-12-22 10:23:17 - client.utils.historical_data_fetcher - INFO - Starting historical data fetch for 3 symbols: ['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 10:23:17 - client.utils.historical_data_fetcher - INFO - Fetching historical data for BSE:SENSEX-INDEX: 30 days back, 1min intervals
+2025-12-22 10:23:19 - client.utils.historical_data_fetcher - INFO - Fetched 7569 historical records for BSE:SENSEX-INDEX
+2025-12-22 10:23:19 - client.utils.historical_data_fetcher - INFO - Successfully logged 7569 historical data records to database for BSE:SENSEX-INDEX
+2025-12-22 10:23:19 - client.utils.historical_data_fetcher - INFO - Saved historical data to CSV: dec2025\csv_data\221225_2025_BSE_SENSEX_INDEX_HISTORY.csv
+2025-12-22 10:23:19 - client.utils.historical_data_fetcher - INFO - Fetching historical data for NSE:NIFTY50-INDEX: 30 days back, 1min intervals
+2025-12-22 10:23:24 - client.utils.historical_data_fetcher - INFO - Fetched 7569 historical records for NSE:NIFTY50-INDEX
+2025-12-22 10:23:24 - client.utils.historical_data_fetcher - INFO - Successfully logged 7569 historical data records to database for NSE:NIFTY50-INDEX
+2025-12-22 10:23:24 - client.utils.historical_data_fetcher - INFO - Saved historical data to CSV: dec2025\csv_data\221225_2025_NSE_NIFTY50_INDEX_HISTORY.csv
+2025-12-22 10:23:24 - client.utils.historical_data_fetcher - INFO - Fetching historical data for NSE:NIFTYBANK-INDEX: 30 days back, 1min intervals
+2025-12-22 10:23:27 - client.utils.historical_data_fetcher - INFO - Fetched 7569 historical records for NSE:NIFTYBANK-INDEX
+2025-12-22 10:23:27 - client.utils.historical_data_fetcher - INFO - Successfully logged 7569 historical data records to database for NSE:NIFTYBANK-INDEX
+2025-12-22 10:23:27 - client.utils.historical_data_fetcher - INFO - Saved historical data to CSV: dec2025\csv_data\221225_2025_NSE_NIFTYBANK_INDEX_HISTORY.csv
+2025-12-22 10:23:27 - __main__ - INFO - Historical data fetch completed
+2025-12-22 10:23:27 - __main__ - INFO - [OK] Monitor started
+2025-12-22 10:23:27 - __main__ - INFO - API endpoints available:
+2025-12-22 10:23:27 - __main__ - INFO -   GET  http://localhost:5000/api/health
+2025-12-22 10:23:27 - __main__ - INFO -   GET  http://localhost:5000/api/status
+2025-12-22 10:23:27 - __main__ - INFO -   POST http://localhost:5000/api/start
+2025-12-22 10:23:27 - __main__ - INFO -   POST http://localhost:5000/api/add-symbol
+2025-12-22 10:23:27 - __main__ - INFO -   POST http://localhost:5000/api/stop
+2025-12-22 10:23:27 - __main__ - INFO - ============================================================
+2025-12-22 10:23:27 - client.utils.option_chain_api - INFO - Starting Flask server on 0.0.0.0:5000
+2025-12-22 10:24:00 - client.utils.option_chain_monitor - INFO - Initializing live price monitoring...
+2025-12-22 10:24:00 - client.utils.live_price_fetcher - INFO - LivePriceFetcher using configured symbols: ['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 10:24:00 - client.utils.live_price_fetcher - INFO - HistoryDataManager initialized for live price logging
+2025-12-22 10:24:00 - client.utils.live_price_fetcher - INFO - Starting live price subscriptions for 3 symbols: ['BSE:SENSEX-INDEX', 'NSE:NIFTY50-INDEX', 'NSE:NIFTYBANK-INDEX']
+2025-12-22 10:24:02 - websocket - INFO - Websocket connected
+2025-12-22 10:24:04 - client.utils.live_price_fetcher - INFO - Subscribed to live prices for BSE:SENSEX-INDEX
+2025-12-22 10:24:06 - websocket - INFO - Websocket connected
+2025-12-22 10:24:08 - client.utils.live_price_fetcher - INFO - Subscribed to live prices for NSE:NIFTY50-INDEX
+2025-12-22 10:24:11 - client.utils.live_price_fetcher - INFO - Subscribed to live prices for NSE:NIFTYBANK-INDEX
+2025-12-22 10:24:11 - client.utils.option_chain_monitor - INFO - Live price subscriptions active: 3/3 symbols
+2025-12-22 10:24:23 - client.utils.option_chain_monitor - WARNING - Polling thread stopped unexpectedly! Restarting...
+2025-12-22 10:24:23 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:24:23 - client.utils.option_chain_monitor - INFO - [THREAD RESTART] fetch_monitor restarted successfully (ID: 16324)
+2025-12-22 10:24:23 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:24:24 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:24:25 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:24:26 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:24:27 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:24:28 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:24:28 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 10:26:23 - client.utils.option_chain_monitor - WARNING - Polling thread stopped unexpectedly! Restarting...
+2025-12-22 10:26:23 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:26:23 - client.utils.option_chain_monitor - INFO - [THREAD RESTART] fetch_monitor restarted successfully (ID: 32444)
+2025-12-22 10:26:23 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:26:25 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:26:26 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:26:27 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:26:27 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:26:28 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:26:28 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
+2025-12-22 10:28:23 - client.utils.option_chain_monitor - WARNING - Polling thread stopped unexpectedly! Restarting...
+2025-12-22 10:28:23 - client.utils.option_chain_monitor - INFO - [THREAD STARTED] fetch_monitor thread is now running
+2025-12-22 10:28:23 - client.utils.option_chain_monitor - INFO - [THREAD RESTART] fetch_monitor restarted successfully (ID: 33252)
+2025-12-22 10:28:23 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:28:25 - client.utils.option_chain_monitor - ERROR - Failed to initialize BSE:SENSEX-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:28:26 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:28:28 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTY50-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:28:28 - FyersAPI - INFO - SSL certificates configured: D:\NS\trading_api_client\.venv\Lib\site-packages\certifi\cacert.pem
+2025-12-22 10:28:30 - client.utils.option_chain_monitor - ERROR - Failed to initialize NSE:NIFTYBANK-INDEX: HTTPSConnectionPool(host='public.fyers.in', port=443): Max retries exceeded with url: /sym_details/NSE_CM.csv (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))
+2025-12-22 10:28:30 - client.utils.option_chain_monitor - ERROR - No symbols successfully initialized
