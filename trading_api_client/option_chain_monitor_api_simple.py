@@ -12,10 +12,13 @@ Module Organization:
 - client.utils.cutoff_timer: Scheduled shutdown capability
 """
 
+import logging
 import os
 import signal
 import ssl
-import logging
+import sys
+import threading
+import time
 from functools import wraps
 from logging.handlers import RotatingFileHandler
 
@@ -23,9 +26,12 @@ import requests
 import urllib3
 
 from client.utils.config import Config
-from client.utils.monitor import OptionChainMonitor
-from client.utils.api import OptionChainAPI
+from client.utils.option_chain_monitor import OptionChainMonitor
+from client.utils.option_chain_api import OptionChainAPI
 from client.utils.cutoff_timer import CutoffTimer
+
+# Add current directory to Python path for local imports
+sys.path.insert(0, os.path.dirname(__file__))
 
 # ============================================================================
 # SSL Configuration
@@ -100,6 +106,20 @@ logger = logging.getLogger(__name__)
 monitor = OptionChainMonitor()
 api = OptionChainAPI(monitor)
 
+# Flag to ensure historical data fetch runs only once
+_fetch_historical_data_called = False
+
+def _fetch_historical_data_delayed():
+    """Fetch historical data after 5 second delay."""
+    try:
+        logger.info("Waiting 5 seconds before fetching historical data...")
+        time.sleep(5)
+        logger.info("Fetching historical data...")
+        monitor.fetch_historical_data()
+        logger.info("Historical data fetch completed")
+    except Exception as e:
+        logger.error(f"Error fetching historical data: {e}", exc_info=True)
+
 def shutdown_handler(signum: int, frame) -> None:
     """Handle shutdown signals gracefully.
     
@@ -107,6 +127,7 @@ def shutdown_handler(signum: int, frame) -> None:
         signum: Signal number
         frame: Current stack frame
     """
+    global _fetch_historical_data_called
     logger.info(f"Received signal {signum}, initiating graceful shutdown...")
     try:
         if monitor.monitor_running:
@@ -114,6 +135,14 @@ def shutdown_handler(signum: int, frame) -> None:
             if monitor.monitor_thread:
                 monitor.monitor_thread.join(timeout=10)
         monitor._cleanup_resources()
+        
+        # Fetch historical data on shutdown if not already done
+        if not _fetch_historical_data_called:
+            _fetch_historical_data_called = True
+            fetch_thread = threading.Thread(target=_fetch_historical_data_delayed, daemon=True)
+            fetch_thread.start()
+            fetch_thread.join(timeout=60)  # Wait max 60 seconds for fetch to complete
+        
         logger.info("Shutdown complete")
     except Exception as e:
         logger.error(f"Error during shutdown: {e}", exc_info=True)
@@ -127,6 +156,8 @@ def shutdown_handler(signum: int, frame) -> None:
 
 def main() -> None:
     """Start the API server and optionally auto-start monitoring."""
+    
+    global _fetch_historical_data_called
 
     # Register signal handlers for graceful shutdown
     signal.signal(signal.SIGINT, shutdown_handler)
@@ -164,10 +195,17 @@ def main() -> None:
         logger.info("Auto-starting monitor...")
         try:
             success, message = monitor.start_monitoring()
-            if success:
-                logger.info(f"[OK] {message}")
-            else:
-                logger.warning(f"[ERROR] Auto-start failed: {message}")
+            # Fetch historical data only once with 5-second delay
+            if not _fetch_historical_data_called:
+                _fetch_historical_data_called = True
+                fetch_thread = threading.Thread(target=_fetch_historical_data_delayed, daemon=True)
+                fetch_thread.start()
+                fetch_thread.join(timeout=60)  # Wait max 60 seconds for fetch to complete
+
+                if success:
+                    logger.info(f"[OK] {message}")
+                else:
+                    logger.warning(f"[ERROR] Auto-start failed: {message}")
         except Exception as e:
             logger.error(f"[ERROR] Auto-start error: {e}", exc_info=True)
 

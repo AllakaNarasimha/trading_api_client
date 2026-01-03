@@ -96,128 +96,87 @@ REM Step 5: Install from tar.gz
 REM =====================================================================
 echo [STEP 5] Installing trading-api-monitor from tar.gz...
 echo This may take a minute...
+echo.
 
-REM First, extract to a temporary location to get the local dependencies
-mkdir "%INSTALL_DIR%\temp_extract" >nul 2>&1
-echo Extracting tar.gz file...
-tar -xzf "%TARBALL%" -C "%INSTALL_DIR%\temp_extract" >nul 2>&1
+REM Install the main package - this will install public dependencies automatically
+echo ===== Installing trading-api-monitor package =====
+call "%PIP%" install "%TARBALL%"
 
-if not exist "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0" (
-    echo ERROR: Failed to extract tar.gz file
-    echo Check that tar.gz file exists at: %TARBALL%
-    pause
+if errorlevel 1 (
+    echo %RED%ERROR: Failed to install trading-api-monitor%RESET%
     exit /b 1
 )
 
-echo Extraction complete. Installing dependencies...
+echo %GREEN%✓ Successfully installed main package%RESET%
 echo.
 
-REM Install local dependencies first - SHOW OUTPUT
-echo ===== Installing trading_api =====
-if exist "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0\client\libs\trading_api-1.0.0.tar.gz" (
-    echo Found: trading_api-1.0.0.tar.gz
-    call "%PIP%" install "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0\client\libs\trading_api-1.0.0.tar.gz"
-    if errorlevel 1 (
-        echo WARNING: trading_api installation may have failed
-    )
-) else (
-    echo ERROR: trading_api-1.0.0.tar.gz not found!
-)
+REM =====================================================================
+REM Step 5b: Run post-installation script
+REM =====================================================================
+echo [STEP 5b] Running post-installation script...
+echo This will install custom packages and dependencies...
 
-echo.
-echo ===== Installing nslogger =====
-if exist "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0\client\libs\nslogger-1.0.0.tar.gz" (
-    echo Found: nslogger-1.0.0.tar.gz
-    call "%PIP%" install "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0\client\libs\nslogger-1.0.0.tar.gz"
-    if errorlevel 1 (
-        echo WARNING: nslogger installation may have failed
-    )
-) else (
-    echo ERROR: nslogger-1.0.0.tar.gz not found!
-)
-
-REM Install requirements.txt if it exists
-echo.
-echo ===== Installing requirements.txt =====
-if exist "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0\requirements.txt" (
-    echo Found: requirements.txt
-    call "%PIP%" install -r "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0\requirements.txt"
-) else (
-    echo requirements.txt not found (this is OK)
-)
-
-REM Install main package from the extracted directory (standard install to get all dependencies)
-echo.
-echo ===== Installing trading-api-monitor package =====
-call "%PIP%" install "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0"
+REM Try to run the post-install script (it's installed as a module)
+call "%PYTHON%" -m post_install 2>&1
 
 if errorlevel 1 (
-    echo.
-    echo WARNING: trading-api-monitor installation returned an error
-    echo This may still be OK if Flask and requests were installed
-    echo Continuing with deployment...
-    echo.
+    echo %YELLOW%⚠ Warning: post_install module failed, trying direct installation...%RESET%
+    
+    REM Fallback: Install dependencies explicitly
+    echo Installing dependencies from requirements.txt...
+    call "%PIP%" install Flask>=2.3.0 requests>=2.28.0 python-dotenv>=0.21.0 certifi>=2023.0.0 fyers-apiv3>=2.0.0 dhanhq>=2.0.0
+    
+    REM Install custom packages
+    echo Installing custom packages...
+    call "%PYTHON%" -c "import sys; from pathlib import Path; import subprocess; import client; libs_dir = Path(client.__file__).parent / 'libs'; packages = ['nslogger-1.0.0.tar.gz', 'trading_api-1.0.0.tar.gz']; [(print(f'Installing {f}...'), subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--no-deps', str(libs_dir / f)])) for f in packages if (libs_dir / f).exists()]"
 )
 
-REM Copy the startup script to installation directory
-echo Copying startup script...
-if exist "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0\option_chain_monitor_api_simple.py" (
-    copy "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0\option_chain_monitor_api_simple.py" "%INSTALL_DIR%\option_chain_monitor_api_simple.py" >nul 2>&1
-    if exist "%INSTALL_DIR%\option_chain_monitor_api_simple.py" (
-        echo Successfully copied startup script
-    )
+REM Verify custom packages installed
+call "%PYTHON%" -c "import nslogger; import trading_api" >nul 2>&1
+if errorlevel 1 (
+    echo %RED%ERROR: Custom packages not installed correctly%RESET%
+    exit /b 1
 )
-
-REM Copy client directory to install directory for easier access
-echo Copying client module...
-if exist "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0\client" (
-    xcopy "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0\client" "%INSTALL_DIR%\client" /E /I /Y >nul 2>&1
-    if exist "%INSTALL_DIR%\client" (
-        echo Successfully copied client module
-    )
-)
-
-REM Copy config.xml from extracted package
-echo Copying package config...
-if exist "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0\config.xml" (
-    copy "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0\config.xml" "%INSTALL_DIR%\config.xml" >nul 2>&1
-)
-
-REM Copy market_data directory if it exists
-echo Copying market data...
-if exist "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0\market_data" (
-    xcopy "%INSTALL_DIR%\temp_extract\trading_api_monitor-1.0.0\market_data" "%INSTALL_DIR%\market_data" /E /I /Y >nul 2>&1
-)
-
-REM Clean up temp extraction (ignore errors if it fails)
-echo Cleaning up temporary files...
-rmdir /s /q "%INSTALL_DIR%\temp_extract" >nul 2>&1
-
-echo %GREEN%✓ Successfully installed from tar.gz%RESET%
+echo %GREEN%✓ Post-installation complete%RESET%
 echo.
 
 REM =====================================================================
 REM Step 6: Verify installation
 REM =====================================================================
 echo [STEP 6] Verifying installation...
-call "%PYTHON%" -c "import sys; sys.path.insert(0, '%INSTALL_DIR%'); import client; print('client module OK')" >nul 2>&1
+
+REM Verify all required modules can be imported
+call "%PYTHON%" -c "import client, nslogger, trading_api, Flask, requests; print('All modules OK')" >nul 2>&1
 
 if errorlevel 1 (
-    echo %YELLOW%⚠ Module verification skipped (client will be loaded from installation directory)%RESET%
+    echo %RED%ERROR: Module verification failed%RESET%
+    echo Checking which modules are missing...
+    call "%PYTHON%" -c "import sys; modules=['client', 'nslogger', 'trading_api', 'Flask', 'requests', 'fyers_apiv3', 'dhanhq']; [print(f'{m}: OK') if __import__(m) else None for m in modules]" 2>&1
+    exit /b 1
 ) else (
-    echo %GREEN%✓ Modules verified successfully%RESET%
+    echo %GREEN%✓ All modules verified successfully%RESET%
 )
 echo.
 
 REM =====================================================================
-REM Step 7: Copy configuration file
+REM Step 7: Copy configuration files
 REM =====================================================================
-echo [STEP 7] Copying configuration file...
+echo [STEP 7] Checking configuration files...
+
+REM Copy config.xml from project directory if it exists
 if exist "%SCRIPT_DIR%config.xml" (
     copy "%SCRIPT_DIR%config.xml" "%INSTALL_DIR%\config.xml" >nul 2>&1
-    echo %GREEN%✓ Copied config.xml%RESET%
+    echo %GREEN%✓ Copied config.xml from project%RESET%
 ) else (
-    echo %YELLOW%⚠ config.xml not found - using defaults%RESET%
+    echo %YELLOW%⚠ config.xml not found in project - using package defaults%RESET%
+)
+
+REM Find and copy the main script from installed package
+call "%PYTHON%" -c "import os, shutil; from pathlib import Path; import option_chain_monitor_api_simple; script_path = Path(option_chain_monitor_api_simple.__file__); install_dir = Path(r'%INSTALL_DIR%'); shutil.copy2(script_path, install_dir / 'option_chain_monitor_api_simple.py') if script_path.exists() else None" 2>nul
+if exist "%INSTALL_DIR%\option_chain_monitor_api_simple.py" (
+    echo %GREEN%✓ Startup script ready%RESET%
+) else (
+    echo %YELLOW%⚠ Warning: Could not locate startup script%RESET%
 )
 echo.
 

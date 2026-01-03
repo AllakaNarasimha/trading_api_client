@@ -50,6 +50,18 @@ class Config:
         self.LOG_MAX_BYTES = 10 * 1024 * 1024  # 10MB
         self.LOG_BACKUP_COUNT = 5
         
+        # Historical data settings
+        self.HISTORICAL_DATA_ENABLED = False
+        self.HISTORICAL_BACKDAYS = 30
+        self.HISTORICAL_DURATION = 5
+        self.HISTORICAL_CSV_EXPORT_ENABLED = False
+        self.HISTORICAL_SYMBOLS = []  # List of symbols to fetch historical data for
+        
+        # Live data settings
+        self.LIVE_DATA_ENABLED = False
+        self.LIVE_DATA_CSV_EXPORT_ENABLED = False
+        self.LIVE_DATA_SYMBOLS = []  # List of symbols to stream live prices for
+        
         # Try to load from XML file
         if os.path.exists(self.config_file):
             try:
@@ -107,6 +119,48 @@ class Config:
                     if monitor_section.find('cutoff_minute') is not None:
                         self.CUTOFF_MINUTE = int(monitor_section.find('cutoff_minute').text or self.CUTOFF_MINUTE)
                 
+                # Load historical data settings
+                historical_section = root.find('historical_data')
+                if historical_section is not None:
+                    if historical_section.find('enabled') is not None:
+                        self.HISTORICAL_DATA_ENABLED = historical_section.find('enabled').text.lower() == 'true'
+                    if historical_section.find('backdays') is not None:
+                        self.HISTORICAL_BACKDAYS = int(historical_section.find('backdays').text or self.HISTORICAL_BACKDAYS)
+                    if historical_section.find('duration') is not None:
+                        self.HISTORICAL_DURATION = int(historical_section.find('duration').text or self.HISTORICAL_DURATION)
+                    if historical_section.find('csv_export_enabled') is not None:
+                        self.HISTORICAL_CSV_EXPORT_ENABLED = historical_section.find('csv_export_enabled').text.lower() == 'true'
+                    
+                    # Load historical symbols configuration
+                    symbols_section = historical_section.find('symbols')
+                    if symbols_section is not None:
+                        historical_symbols = []
+                        for symbol_elem in symbols_section.findall('symbol'):
+                            name = symbol_elem.get('name')
+                            if name:
+                                historical_symbols.append(name)
+                        if historical_symbols:
+                            self.HISTORICAL_SYMBOLS = historical_symbols
+                
+                # Load live data settings
+                live_section = root.find('live_data')
+                if live_section is not None:
+                    if live_section.find('enabled') is not None:
+                        self.LIVE_DATA_ENABLED = live_section.find('enabled').text.lower() == 'true'
+                    if live_section.find('csv_export_enabled') is not None:
+                        self.LIVE_DATA_CSV_EXPORT_ENABLED = live_section.find('csv_export_enabled').text.lower() == 'true'
+                    
+                    # Load live data symbols configuration
+                    symbols_section = live_section.find('symbols')
+                    if symbols_section is not None:
+                        live_symbols = []
+                        for symbol_elem in symbols_section.findall('symbol'):
+                            name = symbol_elem.get('name')
+                            if name:
+                                live_symbols.append(name)
+                        if live_symbols:
+                            self.LIVE_DATA_SYMBOLS = live_symbols
+                
                 logging.getLogger(__name__).info(f"Configuration loaded from {self.config_file}")
             except Exception as e:
                 logging.getLogger(__name__).warning(f"Failed to load config from {self.config_file}: {e}. Using defaults.")
@@ -134,6 +188,24 @@ class Config:
             self.CUTOFF_MINUTE = int(os.getenv('CUTOFF_MINUTE'))
         if os.getenv('HEALTH_CHECK_INTERVAL'):
             self.HEALTH_CHECK_INTERVAL = int(os.getenv('HEALTH_CHECK_INTERVAL'))
+        if os.getenv('HISTORICAL_DATA_ENABLED'):
+            self.HISTORICAL_DATA_ENABLED = os.getenv('HISTORICAL_DATA_ENABLED').lower() == 'true'
+        if os.getenv('HISTORICAL_BACKDAYS'):
+            self.HISTORICAL_BACKDAYS = int(os.getenv('HISTORICAL_BACKDAYS'))
+        if os.getenv('HISTORICAL_DURATION'):
+            self.HISTORICAL_DURATION = int(os.getenv('HISTORICAL_DURATION'))
+        if os.getenv('HISTORICAL_CSV_EXPORT_ENABLED'):
+            self.HISTORICAL_CSV_EXPORT_ENABLED = os.getenv('HISTORICAL_CSV_EXPORT_ENABLED').lower() == 'true'
+        if os.getenv('HISTORICAL_SYMBOLS'):
+            # Comma-separated list of symbols
+            self.HISTORICAL_SYMBOLS = [s.strip() for s in os.getenv('HISTORICAL_SYMBOLS').split(',')]
+        if os.getenv('LIVE_DATA_ENABLED'):
+            self.LIVE_DATA_ENABLED = os.getenv('LIVE_DATA_ENABLED').lower() == 'true'
+        if os.getenv('LIVE_DATA_CSV_EXPORT_ENABLED'):
+            self.LIVE_DATA_CSV_EXPORT_ENABLED = os.getenv('LIVE_DATA_CSV_EXPORT_ENABLED').lower() == 'true'
+        if os.getenv('LIVE_DATA_SYMBOLS'):
+            # Comma-separated list of symbols
+            self.LIVE_DATA_SYMBOLS = [s.strip() for s in os.getenv('LIVE_DATA_SYMBOLS').split(',')]
 
     def get_default_symbol_config(self) -> Dict[str, Dict[str, Any]]:
         """Get default symbol configuration."""

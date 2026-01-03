@@ -65,6 +65,10 @@
         <!-- 300 = 5 minutes, 900 = 15 minutes -->
         <health_check_interval>120</health_check_interval>
         
+        <!-- CSV Export Settings -->
+        <!-- Enable/disable CSV export of option chain data -->
+        <csv_export_enabled>true</csv_export_enabled>
+        
         <!-- Cutoff Timer Settings -->
         <!-- Enable automatic shutdown at specified time -->
         <cutoff_enabled>true</cutoff_enabled>
@@ -81,4 +85,35 @@
             <symbol name="NSE:NIFTYBANK-INDEX" poll_seconds="0,30" strikes="15" />
         </symbols>
     </option_monitor>
+    
+    <!-- Historical Data Configuration -->
+    <historical_data>
+        <!-- Enable/disable historical data fetching -->
+        <enabled>true</enabled>
+        <!-- Number of days back to fetch historical data -->
+        <backdays>30</backdays>
+        <!-- Duration interval: 1, 2, 3, 5, 10, 15, 20, 30 (minutes) -->
+        <duration>1</duration>
+        <!-- Enable/disable CSV export of historical data -->
+        <csv_export_enabled>true</csv_export_enabled>
+        <!-- Symbols to fetch historical data for -->
+        <symbols>
+            <symbol name="BSE:SENSEX-INDEX" />
+            <symbol name="NSE:NIFTY50-INDEX" />
+            <symbol name="NSE:NIFTYBANK-INDEX" />
+        </symbols>
+    </historical_data>
+    
+    <!-- Live Data (Real-time Prices) Configuration -->
+    <live_data>
+        <!-- Enable/disable live price streaming -->
+        <enabled>true</enabled>
+        <!-- Symbols to stream live prices for -->
+        <csv_export_enabled>true</csv_export_enabled>
+        <symbols>
+            <symbol name="BSE:SENSEX-INDEX" />
+            <symbol name="NSE:NIFTY50-INDEX" />
+            <symbol name="NSE:NIFTYBANK-INDEX" />
+        </symbols>
+    </live_data>
 </trading_api_config>

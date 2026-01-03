@@ -21,7 +21,7 @@ class PriceWatcher:
         if symbol not in self.watchlist:
             self.watchlist.append(symbol)
             self.subscribe_to_price(symbol)
-            self.subscribe_to_depth(symbol)
+            # self.subscribe_to_depth(symbol)
             print(f"[INFO] Added {symbol} to watchlist")
     
     def remove_from_watchlist(self, symbol):
@@ -29,7 +29,7 @@ class PriceWatcher:
         if symbol in self.watchlist:
             self.watchlist.remove(symbol)
             self.unsubscribe_from_price(symbol)
-            self.unsubscribe_from_depth(symbol)
+            # self.unsubscribe_from_depth(symbol)
             print(f"[INFO] Removed {symbol} from watchlist")
     
     def get_price(self, symbol):
@@ -86,7 +86,7 @@ class PriceWatcher:
         print(f"    ch: {message.get('ch')}")
         print(f"    chp: {message.get('chp')}")
     
-    def subscribe_to_price(self, symbol: str) -> bool:
+    def subscribe_to_price(self, symbol: str, ltp_callback) -> bool:
         """Subscribe to real-time LTP price updates for a symbol."""
         try:
             if not self.price_watcher:
@@ -94,7 +94,9 @@ class PriceWatcher:
                 return False
             
             print(f"[INFO] Subscribing to price updates for {symbol}...")
-            return self.price_watcher.subscribe_to_price(symbol, self.ltp_callback)
+            if not ltp_callback:
+                ltp_callback = self.ltp_callback
+            return self.price_watcher.subscribe_to_price(symbol, ltp_callback)
         except Exception as e:
             print(f"[ERROR] Failed to subscribe to price: {e}")
             return False
