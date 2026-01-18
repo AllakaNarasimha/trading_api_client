@@ -18,7 +18,7 @@
     <!-- Fyers API Configuration -->
     <fyers>
         <app_id>VBYFHBIOSI-100</app_id>
-        <app_secret>5796M7J3N4</app_secret>
+        <app_secret>28J3QQV0AV</app_secret>
         <access_token></access_token>
         <callback_url>http://localhost:8000</callback_url>
         <response_type>code</response_type>
@@ -43,18 +43,24 @@
         
         <!-- Database URL (optional) -->
         <database_url></database_url>
+
+        <!-- Token directory for storing authentication tokens -->
+        <token_dir>D:\OCCollector\install_monitor\.tokens</token_dir>
     </settings>
     
     <!-- Option Chain Monitor API Configuration -->
     <option_monitor>
+        <enabled>true</enabled>
         <!-- API Server Settings -->
         <api_host>0.0.0.0</api_host>
         <api_port>5000</api_port>
+
+        
         
         <!-- Monitor Settings -->
         <auto_start>true</auto_start>
         <default_strikes>15</default_strikes>
-        <max_symbols>10</max_symbols>
+        <max_symbols>30</max_symbols>
         
         <!-- Option Chain Fetch Duration in seconds -->
         <!-- Time to wait between each polling iteration -->
@@ -64,6 +70,10 @@
         <!-- How often to check if polling thread is still running -->
         <!-- 300 = 5 minutes, 900 = 15 minutes -->
         <health_check_interval>120</health_check_interval>
+        
+        <!-- CSV Export Settings -->
+        <!-- Enable/disable CSV export of option chain data -->
+        <csv_export_enabled>true</csv_export_enabled>
         
         <!-- Cutoff Timer Settings -->
         <!-- Enable automatic shutdown at specified time -->
@@ -76,9 +86,100 @@
         <!-- poll_seconds: comma-separated list of seconds (0-59) to poll at -->
         <!-- strikes: number of strikes to fetch (optional, defaults to default_strikes) -->
         <symbols>
+            <symbol name="NSE:ZENTEC-EQ" poll_seconds="0,30" strikes="15" />
             <symbol name="BSE:SENSEX-INDEX" poll_seconds="0,30" strikes="15" />
             <symbol name="NSE:NIFTY50-INDEX" poll_seconds="0,30" strikes="15" />
-            <symbol name="NSE:NIFTYBANK-INDEX" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:NIFTYBANK-INDEX" poll_seconds="0,30" strikes="15" />			
+			<symbol name="NSE:ICICIAMC-EQ"  poll_seconds="0,30" strikes="15"/>
+            <symbol name="NSE:HYUNDAI-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:GRAVITA-EQ" poll_seconds="0,30" strikes="15" />            
+            <symbol name="NSE:LTTS-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:INFY-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:TCS-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:TATACONSUM-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:TATASTEEL-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:CGPOWER-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:NCC-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:BAJAJFINSV-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:BDL-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:GRSE-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:TORNTPHARM-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:WAAREEENER-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:COLPAL-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:MAZDOCK-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:HAL-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:COCHINSHIP-EQ" poll_seconds="0,30" strikes="15" />
         </symbols>
     </option_monitor>
+    
+    <!-- Historical Data Configuration -->
+    <historical_data>
+        <!-- Enable/disable historical data fetching -->
+        <enabled>true</enabled>
+        <!-- Number of days back to fetch historical data -->
+        <backdays>30</backdays>
+        <!-- Duration interval: 1, 2, 3, 5, 10, 15, 20, 30 (minutes) -->
+        <duration>1</duration>
+        <!-- Enable/disable CSV export of historical data -->
+        <csv_export_enabled>true</csv_export_enabled>
+        <!-- Symbols to fetch historical data for -->
+        <symbols>
+            <symbol name="NSE:ZENTEC-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="BSE:SENSEX-INDEX" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:NIFTY50-INDEX" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:NIFTYBANK-INDEX" poll_seconds="0,30" strikes="15" />			
+			<symbol name="NSE:ICICIAMC-EQ"  poll_seconds="0,30" strikes="15"/>
+            <symbol name="NSE:HYUNDAI-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:GRAVITA-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:LTTS-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:INFY-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:TCS-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:TATACONSUM-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:TATASTEEL-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:CGPOWER-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:NCC-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:BAJAJFINSV-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:BDL-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:GRSE-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:TORNTPHARM-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:WAAREEENER-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:COLPAL-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:MAZDOCK-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:HAL-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:COCHINSHIP-EQ" poll_seconds="0,30" strikes="15" />
+        </symbols>
+    </historical_data>
+    
+    <!-- Live Data (Real-time Prices) Configuration -->
+    <live_data>
+        <!-- Enable/disable live price streaming -->
+        <enabled>true</enabled>
+        <!-- Symbols to stream live prices for -->
+        <csv_export_enabled>true</csv_export_enabled>
+        <symbols>
+            <symbol name="NSE:ZENTEC-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="BSE:SENSEX-INDEX" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:NIFTY50-INDEX" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:NIFTYBANK-INDEX" poll_seconds="0,30" strikes="15" />			
+			<symbol name="NSE:ICICIAMC-EQ"  poll_seconds="0,30" strikes="15"/>
+            <symbol name="NSE:HYUNDAI-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:GRAVITA-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:LTTS-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:INFY-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:TCS-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:TATACONSUM-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:TATASTEEL-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:CGPOWER-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:NCC-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:BAJAJFINSV-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:BDL-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:GRSE-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:TORNTPHARM-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:WAAREEENER-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:COLPAL-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:MAZDOCK-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:HAL-EQ" poll_seconds="0,30" strikes="15" />
+            <symbol name="NSE:COCHINSHIP-EQ" poll_seconds="0,30" strikes="15" />
+        </symbols>
+    </live_data>
 </trading_api_config>

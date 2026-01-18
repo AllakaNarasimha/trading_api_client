@@ -20,13 +20,27 @@ set PIP=%VENV_DIR%\Scripts\pip.exe
 set REINSTALL=false
 set LOG_FILE=%SCRIPT_DIR%\install_monitor.log
 
+REM Check for lock file to prevent concurrent runs
+if exist "%SCRIPT_DIR%\run_monitor.lock" (
+    echo [%date% %time%] Another instance is running, killing processes and removing lock >> "%LOG_FILE%"
+    taskkill /f /im pythonw.exe /t 2>nul
+    taskkill /f /im python.exe /t 2>nul
+    del "%SCRIPT_DIR%\run_monitor.lock" >nul 2>&1
+)
+echo [%date% %time%] Creating lock file >> "%LOG_FILE%"
+echo %date% %time% > "%SCRIPT_DIR%\run_monitor.lock"
+
+echo run monitor log="%LOG_FILE%"
+
+REM Bootstrap files will be read from args.txt by launch_monitor.bat
+REM No need to set bootstrap_file here
+
 REM Create log directory if it doesn't exist
 if not exist "%INSTALL_DIR%" mkdir "%INSTALL_DIR%"
 
 REM =====================================================================
 REM Logging function - append to log file with timestamp
 REM =====================================================================
-setlocal enabledelayedexpansion
 
 REM Log startup information
 echo. >> "%LOG_FILE%"
@@ -37,101 +51,122 @@ echo Install Directory: %INSTALL_DIR% >> "%LOG_FILE%"
 echo Log File: %LOG_FILE% >> "%LOG_FILE%"
 echo ========================================== >> "%LOG_FILE%"
 
-REM Load REINSTALL from args.txt
+REM =====================================================================
+REM Kill any existing Python processes (runs every time)
+REM =====================================================================
+echo [%date% %time%] Stopping any running Python processes >> "%LOG_FILE%"
+taskkill /f /im pythonw.exe /t 2>nul
+taskkill /f /im python.exe /t 2>nul
+echo [%date% %time%] Process termination completed >> "%LOG_FILE%"
+
+REM =====================================================================
+REM Determine if installation/reinstall is needed
+REM =====================================================================
+
+REM Load REINSTALL flag from args.txt with retry mechanism for file locking
+set REINSTALL_REQUESTED=false
 if exist "%SCRIPT_DIR%\args.txt" (
-    findstr /I "REINSTALL=true" "%SCRIPT_DIR%\args.txt" >nul 2>&1
-    if not errorlevel 1 (
-        set REINSTALL=true
-        echo [%date% %time%] REINSTALL=true detected in args.txt >> "%LOG_FILE%"
-    ) else (
-        echo [%date% %time%] REINSTALL=false (not in args.txt) >> "%LOG_FILE%"
+    echo [%date% %time%] Reading REINSTALL flag from args.txt >> "%LOG_FILE%"
+    
+    REM Try to copy file to temp and read from temp to avoid locking issues
+    set "TEMP_ARGS=%TEMP%\args_temp_%RANDOM%.txt"
+    copy /Y "%SCRIPT_DIR%\args.txt" "%TEMP_ARGS%" >nul 2>&1
+    if exist "%TEMP_ARGS%" (
+        for /f "delims=" %%a in ('powershell -Command "try { Get-Content '%TEMP_ARGS%' | Select-String 'REINSTALL=' | ForEach-Object { ($_.Line.Split('=')[1]).Trim() } } catch { exit 1 }" 2^>nul') do (
+            set "REINSTALL_REQUESTED=%%a"
+            goto :READ_REINSTALL_SUCCESS
+        )
+        del "%TEMP_ARGS%" >nul 2>&1
     )
+    
+    :READ_REINSTALL_SUCCESS
+    echo [%date% %time%] Successfully read REINSTALL flag >> "%LOG_FILE%"
+)
+echo [%date% %time%] REINSTALL requested from args.txt: !REINSTALL_REQUESTED! >> "%LOG_FILE%"
+
+REM Check if venv exists
+set VENV_EXISTS=false
+if exist "%VENV_DIR%" (
+    set VENV_EXISTS=true
+    echo [%date% %time%] Virtual environment found at: %VENV_DIR% >> "%LOG_FILE%"
 ) else (
-    echo [%date% %time%] args.txt not found >> "%LOG_FILE%"
+    echo [%date% %time%] Virtual environment not found at: %VENV_DIR% >> "%LOG_FILE%"
 )
 
-REM If REINSTALL is true, uninstall package first
-if "%REINSTALL%"=="true" (
-    echo [%date% %time%] Starting reinstall process >> "%LOG_FILE%"
-    if exist "%VENV_DIR%" (
-        echo [%date% %time%] Found existing venv at: %VENV_DIR% >> "%LOG_FILE%"
-        if exist "%PIP%" (
-            echo [%date% %time%] Uninstalling trading-api-monitor... >> "%LOG_FILE%"
-            call "%PIP%" uninstall trading-api-monitor -y >> "%LOG_FILE%" 2>&1
-            echo [%date% %time%] Uninstall completed >> "%LOG_FILE%"
+REM Determine if we need to install/reinstall
+set NEED_INSTALL=false
+if "!REINSTALL_REQUESTED!"=="true" (
+    set NEED_INSTALL=true
+    echo [%date% %time%] Install triggered: REINSTALL flag set to true >> "%LOG_FILE%"
+)
+if "!VENV_EXISTS!"=="false" (
+    set NEED_INSTALL=true
+    echo [%date% %time%] Install triggered: Virtual environment not found >> "%LOG_FILE%"
+)
+
+REM Handle installation/reinstall if needed
+if "!NEED_INSTALL!"=="true" (
+    echo [%date% %time%] ========== STARTING INSTALLATION ========== >> "%LOG_FILE%"
+    
+    REM Uninstall package if venv exists and reinstall was requested
+    if "!REINSTALL_REQUESTED!"=="true" (
+        if "!VENV_EXISTS!"=="true" (
+            if exist "%PIP%" (
+                echo [%date% %time%] Uninstalling trading-api-monitor... >> "%LOG_FILE%"
+                call "%PIP%" uninstall trading-api-monitor -y >> "%LOG_FILE%" 2>&1
+                echo [%date% %time%] Uninstall completed >> "%LOG_FILE%"
+            ) else (
+                echo [%date% %time%] WARNING: pip not found at %PIP%, skipping uninstall >> "%LOG_FILE%"
+            )
+        )
+    )
+    
+    REM Run installer
+    echo [%date% %time%] Executing install_and_run.bat >> "%LOG_FILE%"
+    call "%SCRIPT_DIR%\install_and_run.bat" >> "%LOG_FILE%" 2>&1
+    set EXIT_CODE=!ERRORLEVEL!
+    echo [%date% %time%] Installation completed with exit code: !EXIT_CODE! >> "%LOG_FILE%"
+    REM exit /b !EXIT_CODE!
+)
+
+echo [%date% %time%] Installation not required, proceeding with monitor startup >> "%LOG_FILE%"
+
+REM Define files to copy from project directory
+set files_to_copy=config.xml config.dir
+
+REM Loop through files and copy if they exist
+for %%f in (%files_to_copy%) do (
+    if exist "%SCRIPT_DIR%%%f" (        
+        copy /Y "%SCRIPT_DIR%%%f" " %INSTALL_DIR%\%%f" >nul 2>&1
+        if errorlevel 1 (
+            echo %RED%✗ Failed to copy %%f - file in use to %INSTALL_DIR%\%%f - %RESET%
+            echo Failed to copy %%f to %INSTALL_DIR%\%%f >> "%LOG_FILE%"
         ) else (
-            echo [%date% %time%] ERROR: pip not found at %PIP% >> "%LOG_FILE%"
+            echo %GREEN%✓ Copied %%f from project to %INSTALL_DIR%\%%f - %RESET% 
+            echo Copied %%f from %SCRIPT_DIR%%%f to %INSTALL_DIR%\%%f >> "%LOG_FILE%"
         )
     ) else (
-        echo [%date% %time%] No existing venv found >> "%LOG_FILE%"
+        echo %YELLOW%⚠ %%f not found in project - using package defaults%RESET%
+        echo %%f not found in project - using package defaults >> "%LOG_FILE%"
     )
-    echo [%date% %time%] Calling install_and_run.bat >> "%LOG_FILE%"
-    call "%SCRIPT_DIR%\install_and_run.bat" >> "%LOG_FILE%" 2>&1
-    set EXIT_CODE=!ERRORLEVEL!
-    echo [%date% %time%] install_and_run.bat completed with exit code: !EXIT_CODE! >> "%LOG_FILE%"
-    exit /b !EXIT_CODE!
 )
-
-REM Check if installation exists
-if not exist "%VENV_DIR%" (
-    echo [%date% %time%] Installation not found at: %VENV_DIR% >> "%LOG_FILE%"
-    echo [%date% %time%] Running installer >> "%LOG_FILE%"
-    call "%SCRIPT_DIR%\install_and_run.bat" >> "%LOG_FILE%" 2>&1
-    set EXIT_CODE=!ERRORLEVEL!
-    echo [%date% %time%] install_and_run.bat completed with exit code: !EXIT_CODE! >> "%LOG_FILE%"
-    exit /b !EXIT_CODE!
-) else (
-    echo [%date% %time%] Installation found at: %VENV_DIR% >> "%LOG_FILE%"
-)
-
-REM Copy config if needed
-if exist "%SCRIPT_DIR%\config.xml" (
-    if not exist "%INSTALL_DIR%\config.xml" (
-        copy "%SCRIPT_DIR%\config.xml" "%INSTALL_DIR%\config.xml" >nul 2>&1
-        echo [%date% %time%] Copied config.xml from %SCRIPT_DIR% >> "%LOG_FILE%"
-    ) else (
-        echo [%date% %time%] config.xml already exists >> "%LOG_FILE%"
-    )
-) else (
-    echo [%date% %time%] WARNING: config.xml not found in %SCRIPT_DIR% >> "%LOG_FILE%"
-)
-
-REM Check if the main script exists
-if not exist "%INSTALL_DIR%\option_chain_monitor_api_simple.py" (
-    echo [ERROR %date% %time%] option_chain_monitor_api_simple.py not found in %INSTALL_DIR% >> "%LOG_FILE%"
-    exit /b 1
-) else (
-    echo [%date% %time%] Found option_chain_monitor_api_simple.py >> "%LOG_FILE%"
-)
+echo.
 
 cd /d "%INSTALL_DIR%"
 echo [%date% %time%] Changed directory to: %CD% >> "%LOG_FILE%"
 
-REM Verify Python exists before running
-if not exist "%PYTHON%" (
-    echo [ERROR %date% %time%] Python executable not found at: %PYTHON% >> "%LOG_FILE%"
-    echo [ERROR %date% %time%] Venv may not be properly installed >> "%LOG_FILE%"
-    exit /b 1
-) else (
-    echo [%date% %time%] Python found at: %PYTHON% >> "%LOG_FILE%"
-)
+REM Wait before launching monitor
+echo [%date% %time%] Waiting 20 seconds before launching monitor process >> "%LOG_FILE%"
+timeout /t 10 /nobreak >nul
+echo [%date% %time%] Delay completed, launching monitor >> "%LOG_FILE%"
 
-echo [%date% %time%] Starting monitor process >> "%LOG_FILE%"
+REM Launch the monitor process
+echo [%date% %time%] Calling launch_monitor.bat >> "%LOG_FILE%"
+call "%SCRIPT_DIR%\launch_monitor.bat" >> "%LOG_FILE%" 2>&1
+set EXIT_CODE=!ERRORLEVEL!
+echo [%date% %time%] launch_monitor.bat completed with exit code: !EXIT_CODE! >> "%LOG_FILE%"
 
-if exist "%PYTHONW%" (
-    echo [%date% %time%] Using pythonw.exe for silent background execution >> "%LOG_FILE%"
-    start "" /min /b "%PYTHONW%" "%INSTALL_DIR%\option_chain_monitor_api_simple.py"
-    echo [%date% %time%] Process started with pythonw.exe (PID will be in background) >> "%LOG_FILE%"
-) else (
-    echo [%date% %time%] pythonw.exe not found at: %PYTHONW% >> "%LOG_FILE%"
-    echo [%date% %time%] Using python.exe instead >> "%LOG_FILE%"
-    start "" /b "%PYTHON%" "%INSTALL_DIR%\option_chain_monitor_api_simple.py"
-    echo [%date% %time%] Process started with python.exe >> "%LOG_FILE%"
-)
+REM Remove lock file
+del "%SCRIPT_DIR%\run_monitor.lock" >nul 2>&1
 
-echo [%date% %time%] Monitor process started successfully >> "%LOG_FILE%"
-echo [%date% %time%] Application log file: %INSTALL_DIR%\monitor_output.log >> "%LOG_FILE%"
-echo [%date% %time%] Script execution complete >> "%LOG_FILE%"
-echo ========================================== >> "%LOG_FILE%"
-
-exit /b 0
+exit /b !EXIT_CODE!

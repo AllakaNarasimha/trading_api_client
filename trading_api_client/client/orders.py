@@ -3,7 +3,10 @@
 Manages buy/sell orders across multiple brokers.
 """
 
+import logging
 from client.auth import get_auth_manager
+
+logger = logging.getLogger(__name__)
 
 class OrderManager:
     """Manage orders across multiple brokers."""
@@ -17,10 +20,10 @@ class OrderManager:
         """Place order on Fyers broker."""
         try:
             if not self.orders:
-                print("[ERROR] Fyers not authenticated")
+                logger.error("Fyers not authenticated")
                 return {"status": "error", "message": "Fyers not authenticated", "broker": "fyers"}
             
-            print(f"[INFO] Placing Fyers {order_type} order: {symbol} x{qty} @ {price}")
+            logger.info(f"Placing Fyers {order_type} order: {symbol} x{qty} @ {price}")
             # Use orders interface to place order
             order_result = self.orders.place_order({
                 "symbol": symbol,
@@ -30,19 +33,19 @@ class OrderManager:
             })
             return {"status": "success", "broker": "fyers", "result": order_result}
         except Exception as e:
-            print(f"[ERROR] Fyers order failed: {e}")
+            logger.error(f"Fyers order failed: {e}")
             return {"status": "error", "message": str(e), "broker": "fyers"}
     
     def get_order_status(self, order_id, broker="dhan"):
         """Get status of an order."""
-        print(f"[INFO] Fetching order {order_id} status from {broker}")
+        logger.info(f"Fetching order {order_id} status from {broker}")
         return {"order_id": order_id, "status": "pending"}
 
 
 def main():
     """Main function for orders module."""
     manager = OrderManager()
-    print("\n[Order Management]")
+    logger.info("\n[Order Management]")
     manager.place_order("TCS", 1, 3500)
 
 

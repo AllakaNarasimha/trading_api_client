@@ -24,8 +24,8 @@ from trading_api import FyersAPI, IPriceWatcher
 import urllib3
 
 from client.utils.config import Config
-from client.utils.monitor import OptionChainMonitor
-from client.utils.api import OptionChainAPI
+from client.utils.option_chain_monitor import OptionChainMonitor
+from client.utils.option_chain_api import OptionChainAPI
 from client.utils.cutoff_timer import CutoffTimer
 from client.watchlist import PriceWatcher
 
@@ -157,7 +157,7 @@ def main() -> None:
         try:
             cutoff_timer = CutoffTimer(config.CUTOFF_HOUR, config.CUTOFF_MINUTE)
             cutoff_timer.start()
-            logger.info("[OK] Cutoff timer started")
+            logger.info("Ok Cutoff timer started")
         except Exception as e:
             logger.error(f"[ERROR] Failed to start cutoff timer: {e}", exc_info=True)
 
@@ -167,7 +167,7 @@ def main() -> None:
         try:
             success, message = monitor.start_monitoring()
             if success:
-                logger.info(f"[OK] {message}")
+                logger.info(f"Ok {message}")
             else:
                 logger.warning(f"[ERROR] Auto-start failed: {message}")
         except Exception as e:

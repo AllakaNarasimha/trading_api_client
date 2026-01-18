@@ -2,7 +2,11 @@
 
 Manages holdings, cash, and portfolio analytics.
 """
+
+import logging
 from .auth import get_auth_manager
+
+logger = logging.getLogger(__name__)
 
 
 class Portfolio:
@@ -20,10 +24,10 @@ class Portfolio:
         """Get Fyers holdings."""
         try:                        
             if not self.auth_manager.is_authenticated:
-                print("[WARNING] Fyers not authenticated")
+                logger.warning("Fyers not authenticated")
                 return {"status": "error", "message": "Fyers not authenticated", "broker": "fyers"}
             
-            print("[INFO] Fetching Fyers holdings...")
+            logger.info("Fetching Fyers holdings...")
             # Get holdings from Fyers API
             holdings_data = self.funds.get_holdings()
             
@@ -54,7 +58,7 @@ class Portfolio:
                 return {"status": "success", "broker": "fyers", "holdings": [], "total_value": 0, "total_quantity": 0, "count": 0}
                 
         except Exception as e:
-            print(f"[ERROR] Failed to fetch Fyers holdings: {e}")
+            logger.error(f"Failed to fetch Fyers holdings: {e}")
             return {"status": "error", "message": str(e), "broker": "fyers"}
     
     def get_auth_status(self):
@@ -77,25 +81,25 @@ def main():
     portfolio = Portfolio()
     holdings = portfolio.get_total_portfolio()
     
-    print("\n[Portfolio Analysis]")
-    print("=" * 60)
+    logger.info("\n[Portfolio Analysis]")
+    logger.info("=" * 60)
     
     # Holdings
     data = holdings[portfolio.auth_manager.broker]
     if data.get('status') == 'success':
-        print(f"\n[Holdings]")
-        print(f"  Total Value: ₹{data.get('total_value', 0):,.2f}")
-        print(f"  Total Quantity: {data.get('total_quantity', 0)}")
-        print(f"  Number of Stocks: {data.get('count', 0)}")
+        logger.info(f"\n[Holdings]")
+        logger.info(f"  Total Value: ₹{data.get('total_value', 0):,.2f}")
+        logger.info(f"  Total Quantity: {data.get('total_quantity', 0)}")
+        logger.info(f"  Number of Stocks: {data.get('count', 0)}")
         
         if data.get('holdings'):
-            print("  Holdings:")
+            logger.info("  Holdings:")
             for holding in data['holdings'][:5]:  # Show first 5
                 symbol = holding.get('trading_symbol', holding.get('symbol', 'N/A'))
                 qty = holding.get('quantity', 0)
                 value = holding.get('totalValue', holding.get('marketVal', 0))
-                print(f"    {symbol}: {qty} shares (₹{float(value):,.2f})")
+                logger.info(f"    {symbol}: {qty} shares (₹{float(value):,.2f})")
             if len(data['holdings']) > 5:
-                print(f"    ... and {len(data['holdings']) - 5} more")
+                logger.info(f"    ... and {len(data['holdings']) - 5} more")
     else:
-        print(f"\n[Holdings] ERROR: {data.get('message', 'Unknown error')}")    
+        logger.info(f"\n[Holdings] ERROR: {data.get('message', 'Unknown error')}")    
