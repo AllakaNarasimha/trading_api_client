@@ -1,0 +1,3 @@
+REINSTALL=false
+BOOTSTRAP_LIST=-m client.auth;-m client.history_data_fetch_controller
+LIVE_LIST=-m client.oi_data_fetch_controller;-m client.live_data_fetch_controller

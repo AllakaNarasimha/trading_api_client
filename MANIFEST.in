@@ -1,0 +1,5 @@
+include option_chain_monitor_api_simple.py
+include post_install.py
+include requirements.txt
+include config.xml
+recursive-include client/libs *.tar.gz
